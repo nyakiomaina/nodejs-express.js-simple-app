@@ -1,12 +1,8 @@
-const http = require ('http');
-const fs = require ('fs');
-const port = process.env.PORT || 2000;
+const express = require('express');
+const app = express()
 
-const server = http.createServer((req, res)=>{
-    res.writeHead(200, {'contentType':'text/html'});
-    var template = fs.readFileSync('./index.html');
-    res.end(template);
+app.get('/', (req,res) => res.send('hello world'));
+
+app.listen(3000, () => {
+    console.log('Running on port 3000!');
 })
-
-server.listen(port);
-console.log(`server listening on port ${port}`);
